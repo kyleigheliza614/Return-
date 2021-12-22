@@ -1,0 +1,2 @@
+# Return-
+unc _SciTE_Send_Command...  ...  $sMsg = _ConvertAnsiToUtf8(':' &amp; Dec(StringTrimLeft($hWnd, 2)) &amp; ':' &amp; $sMsg)  ...  EndFunc  Func _ConvertAnsiToUtf8($sText)     Local $tUnicode = _WinAPI_MultiByteToWideChar($sText)     If @error Then Return SetError(@error, 0, "")     Local $sUtf8 = _WinAPI_WideCharToMultiByte(DllStructGetPtr($tUnicode), 65001)     If @error Then Return SetError(@error, 0, "")     Return SetError(0, 0, $sUtf8) EndFunc  And now it works
